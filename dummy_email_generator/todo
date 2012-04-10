@@ -1,2 +1,3 @@
-connect to external file containing sailthru api credentials
-in dummy.py add ability to take in non-required variable stating what environment to push the list to
+f.open external file containing sailthru api credentials
+in dummy.py add ability to take in non-required arg stating what environment to push the list to
+add ability to push to that environment
