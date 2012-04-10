@@ -1,0 +1,2 @@
+connect to external file containing sailthru api credentials
+in dummy.py add ability to take in non-required variable stating what environment to push the list to
