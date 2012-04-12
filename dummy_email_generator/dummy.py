@@ -7,9 +7,6 @@ parser.add_argument('-n','--n_variable', type=int, help='Number of fake emails t
 args = vars(parser.parse_args())
 
 f = open('fakes.txt','w')
-
+template = 'danny+test%03d@sailthru.com\n'
 x = args['n_variable']
-while x != 0:
-    x = x - 1
-    f.write ("danny+test" + str(x) + "@sailthru.com\n")
-
+f.writelines(template % (x+1) for x in range(x))
