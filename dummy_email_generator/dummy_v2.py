@@ -9,7 +9,7 @@ from datetime import datetime
 import argparse
 import json
 import os.path
- 
+  
 json_data=open('/Users/robertrosen/d.txt')
 data = json.load(json_data)
 api_key=(data["api_key"])
