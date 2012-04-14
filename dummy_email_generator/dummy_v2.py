@@ -10,6 +10,8 @@ import argparse
 import json
 import os.path
   
+template = 'danny+test%03d@sailthru.com'
+
 json_data=open('/Users/robertrosen/d.txt')
 data = json.load(json_data)
 api_key=(data["api_key"])
@@ -23,15 +25,19 @@ args = vars(parser.parse_args())
 num = args['n_variable']
 env = args['e_variable']
 
-fname= (str(num) + "_person_list")
-	
+# a list of e-mails
+emails = [template % (num+1) for num in range(num)]
+
+# the name of the list, used as filename also
+fname = ("%d_person_list" % num)
+
+# A comma-separated list of emails as a string, See
+# http://docs.sailthru.com/api/job#import
+file_content = ','.join(emails)
+
 f = open(fname,'w+')
-file_content = (f.readlines())
-
-
-template = 'danny+test%03d@sailthru.com\n'
 f.writelines("emails\n")
-f.writelines(template % (num+1) for num in range(num))
+f.writelines('%s\n' for x in emails)
 
 env_urls = {
     "qa": "http://api.sailthru-qa.com",
