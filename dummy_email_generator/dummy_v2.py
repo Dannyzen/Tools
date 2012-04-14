@@ -2,13 +2,8 @@
 #usage: dummy.py -n # -e (prod,qa,dev) outputs to a fakes.txt file.
 #twitter: @dannyzen
 from sailthru import sailthru_client as sc
-import random
-import string
-from time import time
-from datetime import datetime
 import argparse
 import json
-import os.path
   
 template = 'danny+test%03d@sailthru.com'
 
