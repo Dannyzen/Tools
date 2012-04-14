@@ -33,16 +33,18 @@ template = 'danny+test%03d@sailthru.com\n'
 f.writelines("emails\n")
 f.writelines(template % (num+1) for num in range(num))
 
-if env == "qa":
-	env_url = "http://api.sailthru-qa.com"
-elif env =="prod":
-	env_url = "http://api.sailthru.com"
-elif env =="dev":
-	env_url = "http://api.sailthru-dev.com"
-else:
-	print "i need an environment"
+env_urls = {
+    "qa": "http://api.sailthru-qa.com",
+    "prod": "http://api.sailthru.com",
+    "dev": "http://api.sailthru-dev.com",
+}
 
-sailthru_client = sc.SailthruClient(api_key, api_secret,env_url)
+try:
+    env_url = env_urls[env]
+except KeyError:
+    raise KeyError("Unknown or unspecified environment %r" % env)
+
+sailthru_client = sc.SailthruClient(api_key, api_secret, env_url)
 data={"job": "import","list":fname,"emails":file_content}
 response = sailthru_client.api_post('job',data)
 print response
