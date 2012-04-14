@@ -20,10 +20,10 @@ args = parser.parse_args()
 num = args.n_variable
 env = args.e_variable
 
-json_data=open('/Users/robertrosen/d.txt')
+json_data = open('/Users/robertrosen/d.txt')
 data = json.load(json_data)
-api_key=(data["api_key"])
-api_secret=(data["api_secret"])
+api_key = data["api_key"]
+api_secret = data["api_secret"]
 json_data.close()
 
 # a list of e-mails
@@ -36,7 +36,7 @@ fname = ("%d_person_list" % num)
 # http://docs.sailthru.com/api/job#import
 file_content = ','.join(emails)
 
-f = open(fname,'w+')
+f = open(fname, 'w+')
 f.writelines("emails\n")
 f.writelines('%s\n' for x in emails)
 
@@ -46,7 +46,11 @@ except KeyError:
     raise KeyError("Unknown or unspecified environment %r" % env)
 
 sailthru_client = sc.SailthruClient(api_key, api_secret, env_url)
-data={"job": "import","list":fname,"emails":file_content}
-response = sailthru_client.api_post('job',data)
+data = {
+    "job": "import",
+    "list": fname,
+    "emails": file_content,
+}
+response = sailthru_client.api_post('job', data)
 print response
 print fname
