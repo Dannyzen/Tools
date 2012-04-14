@@ -12,6 +12,12 @@ import os.path
   
 template = 'danny+test%03d@sailthru.com'
 
+env_urls = {
+    "qa": "http://api.sailthru-qa.com",
+    "prod": "http://api.sailthru.com",
+    "dev": "http://api.sailthru-dev.com",
+}
+
 json_data=open('/Users/robertrosen/d.txt')
 data = json.load(json_data)
 api_key=(data["api_key"])
@@ -38,12 +44,6 @@ file_content = ','.join(emails)
 f = open(fname,'w+')
 f.writelines("emails\n")
 f.writelines('%s\n' for x in emails)
-
-env_urls = {
-    "qa": "http://api.sailthru-qa.com",
-    "prod": "http://api.sailthru.com",
-    "dev": "http://api.sailthru-dev.com",
-}
 
 try:
     env_url = env_urls[env]
