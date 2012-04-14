@@ -25,6 +25,11 @@ with open('/Users/robertrosen/d.txt') as json_data:
     api_key = data["api_key"]
     api_secret = data["api_secret"]
 
+try:
+    env_url = env_urls[env]
+except KeyError:
+    raise KeyError("Unknown or unspecified environment %r" % env)
+
 # a list of e-mails
 emails = [template % (num+1) for num in range(num)]
 
@@ -38,11 +43,6 @@ file_content = ','.join(emails)
 with open(fname, 'w+') as f:
     f.writelines("emails\n")
     f.writelines('%s\n' for x in emails)
-
-try:
-    env_url = env_urls[env]
-except KeyError:
-    raise KeyError("Unknown or unspecified environment %r" % env)
 
 sailthru_client = sc.SailthruClient(api_key, api_secret, env_url)
 data = {
