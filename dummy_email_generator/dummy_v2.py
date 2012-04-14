@@ -1,5 +1,5 @@
 #simple random email generator using my sailthru address (danny rosen 4/10/2012)
-#usage: dummy.py -n # -e (prod,qa,dev) outputs to a fakes.txt file.
+#usage: dummy.py -n # -e (prod,qa,dev) outputs to a (num)_person_list.txt file.
 #twitter: @dannyzen
 from sailthru import sailthru_client as sc
 import argparse
