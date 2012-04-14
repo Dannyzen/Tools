@@ -18,18 +18,18 @@ env_urls = {
     "dev": "http://api.sailthru-dev.com",
 }
 
-json_data=open('/Users/robertrosen/d.txt')
-data = json.load(json_data)
-api_key=(data["api_key"])
-api_secret=(data["api_secret"])
-json_data.close()
-
 parser = argparse.ArgumentParser(description='Docs docs docs these are my docs')
 parser.add_argument('-n','--n_variable', type=int, help='Number of fake emails to create', required=True)
 parser.add_argument('-e','--e_variable', type=str, help='Environment', required=True)
 args = vars(parser.parse_args())
 num = args['n_variable']
 env = args['e_variable']
+
+json_data=open('/Users/robertrosen/d.txt')
+data = json.load(json_data)
+api_key=(data["api_key"])
+api_secret=(data["api_secret"])
+json_data.close()
 
 # a list of e-mails
 emails = [template % (num+1) for num in range(num)]
