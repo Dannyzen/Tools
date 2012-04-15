@@ -1,2 +1,3 @@
 From time to time I do things that I know in the future I will need to do again. Automation is the answer and python is the language.
-
+1 - Dummy Email Generator - creates dummy emails and uploads them to sailthru
+2 - List delete - gets all the lists for a sailthru account given an environment and deletes them
