@@ -20,7 +20,7 @@ args = parser.parse_args()
 num = args.n_variable
 env = args.e_variable
 #open the data file with the api info
-with open('/Users/robertrosen/d.txt') as json_data:
+with open('/home/ubuntu/d.txt') as json_data:
     data = json.load(json_data)
     api_key = data["api_key"]
     api_secret = data["api_secret"]
@@ -31,10 +31,9 @@ except KeyError:
     raise KeyError("Unknown or unspecified environment %r" % env)
 
 # a list of e-mails
-emails = [template % (num+1) for num in range(num)]
+emails = [template % (n+1) for n in range(num)]
 
 # the name of the list, used as filename also. if i dont +1 num it goes foobar, i uh.. dont know why.
-num = num +1
 fname = ("%d_person_list" % num)
 
 # A comma-separated list of emails as a string, See
@@ -53,5 +52,3 @@ data = {
 }
 response = sailthru_client.api_post('job', data)
 print response
-print fname
-print num
