@@ -27,5 +27,9 @@ except KeyError:
 sailthru_client = sc.SailthruClient(api_key, api_secret, env_url)
 response = sailthru_client.api_get('list', data)
 jdata = json.loads(response)
-print([l['name'] for l in jdata['lists']]) 
-
+#[ (the thing I want) for (variable to iterate) in (some other list)]
+rmlist=([l['name'] for l in jdata['lists']]) 
+for list_name in rmlist:
+	todelete={"list":list_name}
+	response = sailthru_client.api_delete('list', todelete)
+	print response
