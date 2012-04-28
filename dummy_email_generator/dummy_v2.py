@@ -5,7 +5,7 @@ from sailthru import sailthru_client as sc
 import argparse
 import json
   
-template = 'danny+test%03d@sailthru.com'
+template = 'sailtest%03d@mailinator.com'
 
 env_urls = {
     "qa": "http://api.sailthru-qa.com",
