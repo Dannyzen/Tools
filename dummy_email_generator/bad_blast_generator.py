@@ -34,7 +34,7 @@ except KeyError:
 emails = [template % (n+1) for n in range(num)]
 
 # the name of the list, used as filename also. if i dont +1 num it goes foobar, i uh.. dont know why.
-fname = ("%d_person_list" % num)
+fname = ("%d_person_list_bad" % num)
 
 # A comma-separated list of emails as a string, See
 # http://docs.sailthru.com/api/job#import
