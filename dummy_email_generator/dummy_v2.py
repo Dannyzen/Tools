@@ -37,7 +37,7 @@ except KeyError:
 # a list of e-mails
 emails = [template % (n+1) for n in range(num)]
 
-# the name of the list, used as filename also. if i dont +1 num it goes foobar, i uh.. dont know why.
+# the name of the list, used as filename also. 
 fname = ("%d_person_list" % num)
 
 # A comma-separated list of emails as a string, See
