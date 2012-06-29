@@ -4,8 +4,10 @@
 from sailthru import sailthru_client as sc
 import argparse
 import json
-  
-template = 'sailtest%03d@mailinator.com'
+
+
+template = 'danny+testa%03d@xxxxxmailinator.com'
+#template = 'danny+test%03d@sailthru.com'
 
 env_urls = {
     "qa": "http://api.sailthru-qa.com",
@@ -21,6 +23,8 @@ num = args.n_variable
 env = args.e_variable
 #open the data file with the api info
 with open('../../d.txt') as json_data:
+#with open('../../3068.txt') as json_data:
+#with open('../../3060.txt') as json_data:
     data = json.load(json_data)
     api_key = data["api_key"]
     api_secret = data["api_secret"]
