@@ -35,6 +35,6 @@ print search
 response = fb.search(q=search)
 for case in response.cases.childGenerator():
 	print case['ixbug']
-#	fb.edit(ixBug=case['ixbug'],sFixFor=args.n_variable)
+	fb.edit(ixBug=case['ixbug'],sFixFor=args.n_variable)
 
 
