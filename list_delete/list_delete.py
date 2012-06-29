@@ -15,7 +15,7 @@ args = parser.parse_args()
 env = args.e_variable
 
 #open the data file with the api info
-with open('/home/ubuntu/d.txt') as json_data:
+with open('../../d.txt') as json_data:
     data = json.load(json_data)
     api_key = data["api_key"]
     api_secret = data["api_secret"]
