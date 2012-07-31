@@ -1,82 +1,82 @@
-"""
-Random Assignment
+#!/usr/bin/python2.7
 
-When you have cases that are handled by multiple individuals on a team,
-it can be difficult to distribute the tasks evenly to each member without
-cherry picking or having someone manage the queue.
-
-This script helps by taking cases assigned to an "Up For Grabs" user and
-re-assigning them randomly to the members of the team, based on a specified
-weight.
-
-How to use this script:
-1. Set up a Virtual User called "Up For Grabs" within FogBugz.
-2. Make the "Up For Grabs" user the primary contact for the support area
-   you are using.
-3. Change the settings below to correspond to your installation.
-4. Run this script using:
-   > python randomAssignment.py
-   
-See https://developers.fogbugz.com/default.asp?W194 for more
-information on using the FogBugz XML API with Python.
-"""
+import fbSettings
+from fogbugz import FogBugz
+from random import choice
+from random import shuffle
+from time import sleep
+from time import strftime
 
 IX_PERSON_UP_FOR_GRABS = 53 # the ixPerson value of the Up For Grabs user
-#IX_AREA_SUPPORT        = 36 # the ixArea value of the cases in your support queue
+IX_AREA_SUPPORT        = 36 # the ixArea value of the cases in your support queue
 REPS = { 25 : ['Danny Test',1],     # a list of team members, using this format:
      52 : ['Eric Test', 1]}       # { ixPerson : [name, weight]...
 
-import re
-from fogbugz import FogBugz
-import fbSettings
-import random 
-from random import choice
-
-#log onto FogBugz 
-print fbSettings.Login, fbSettings.pw
+#Log onto FogBugz 
+print "Logging in..."
 fogbugz = FogBugz(fbSettings.URL)
 fogbugz.logon(fbSettings.Login, fbSettings.pw)
-
-
-#lottery is an array to help with randomness
-lottery = []
-#this will fill the lottery array with the ixPerson values in REPS,
-#one for each "weight" value above
-
-testers = []
-
+assignment = {}
+#Add users and current assignment count to dictionary.
 for rep in REPS:
-  #lottery.extend([rep] * REPS[rep][1])
-  testers.append(rep)
-
-print testers
-
-#shuffle the list
-random.shuffle(lottery)
-
+  searchString = 'assignedto: "=%s" status:"Reviewed"' % (rep)
+  num = str(fogbugz.search(q=searchString)).split('"')
+  assignment[rep] = num[1]
+for user in assignment:
+  print user, "has", assignment[user], "assignment(s)!"
+#Code for assignment is only scaleable up to this point. Per convo w/ Danny, we will review this and make necessary edits once we hire more automation engineers.
+sum = int(assignment.values()[0])-int(assignment.values()[1])
+#Obtain all tickets assigned to our main QA user.
 searchString = 'assignedto: "=%s"' % (IX_PERSON_UP_FOR_GRABS)
-#setfilter = fogbugz.setCurrentFilter(sFilter=130)
-respUpForGrabs = fogbugz.search(q=searchString,cols='ixBug,ixPersonOpenedBy')
-
-
-
-
-
-for case in respUpForGrabs.cases.childGenerator():
-	print case 
-	exit()
-	if case['ixpersonopenedby'] in testers:
-		target_rep = case['ixpersonopenedby']
-		#print target_rep, "goes to", case['ixpersonopenedby']
-	else:
-			target_rep = choice(testers)
-			#print target_rep, "goes to", case['ixpersonopenedby']
-	fogbugz.assign(ixBug=case.ixbug.string,ixPersonAssignedTo=target_rep)
-    
-	#if the person who last edited the case assigned it to the Up For Grabs user,
-    #we want to keep iterating through the lottery until we get a different user.
-
-#while target_rep == case.ixPersonOpenedBy: 
-#        target_rep = lottery[i % len(lottery)]
-#        i += 1
-
+grabs = fogbugz.search(q=searchString)
+tickets = []
+for case in grabs.cases.childGenerator():
+  tickets.append(case['ixbug'])
+#Assign as necessary
+print len(tickets), "total tickets..."
+c = 0
+try:
+  if sum < 0:
+    print assignment.keys()[0], "needs", str(sum).strip('-'), "more!"
+    searchString = 'assignedto: "=%s"' % (assignment.keys()[0])
+    sum = str(sum).strip('-')
+    while c < int(sum):
+      fogbugz.assign(ixBug=tickets[c],ixPersonAssignedTo=assignment.keys()[0])
+      data = tickets[c]
+      tickets.remove(data)
+      c=c+1
+      print "Initial Assignment:", tickets[c], "to", assignment.keys()[0]
+  elif int(sum) > 0:
+    print assignment.keys()[1], "needs", str(sum).strip('-'), "more!"
+    searchString = 'assignedto: "=%s"' % (assignment.keys()[1])
+    sum = str(sum).strip('-')
+    while c < int(sum):
+      fogbugz.assign(ixBug=tickets[c],ixPersonAssignedTo=assignment.keys()[1])
+      data = tickets[c]
+      tickets.remove(data)
+      c=c+1
+      print "Initial Assignment:", tickets[c], "to", assignment.keys()[1]
+  elif sum == 0:
+    print "Assignment counts are equal. Continuing..."
+  else:
+    print "There was a problem calculating current assignments..."
+    exit()
+except IndexError:
+  print len(tickets), "tickets available... Please assign some..."
+#Reset count and assign tickets evenly.
+c = 0
+shuffle(tickets)
+total = len(tickets)
+print total, "tickets left..."
+users = [assignment.keys()[0],assignment.keys()[1]]
+while c < total:
+  try:
+    for user in users:
+      fogbugz.assign(ixBug=tickets[c],ixPersonAssignedTo=user)
+      data = tickets[c]
+      print "Assigned", data, "to", user
+      c=c+1
+  except IndexError:
+    print "."
+    break
+print "Round Robin completed -", strftime("%m/%d/%Y %H:%M:%S")
