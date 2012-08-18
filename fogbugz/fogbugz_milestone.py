@@ -11,7 +11,11 @@ parser.add_argument('-o','--o_variable', type=str, help='Old Milestone name', re
 parser.add_argument('-n','--n_variable', type=str, help='New Milestone name', required=True)
 args = parser.parse_args()
 
+
 fb = FogBugz("https://sailthru.fogbugz.com/") 
+
+# To run this needs a d.txt file that contains the json of: {"login":"your_fogbugz_login","pass":"your_fogbugz_password"}
+
 with open('../d.txt') as json_data:
 	data = json.load(json_data)
 	login = data["login"]
