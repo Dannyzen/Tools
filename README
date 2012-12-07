@@ -6,5 +6,5 @@ From time to time I do things that I know in the future I will need to do again.
 4 - Template Delete - gets all the templates for a sailthru account given an environment and deletes them
 
 -- Fogbugz related
-1 - Fogbugz milestone changer - pass it a target milestone and change it a new milestone
+1 - Fogbugz milestone changer - pass it a target milestone and change it to a new milestone
 
