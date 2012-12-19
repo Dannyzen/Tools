@@ -12,6 +12,7 @@ template = 'danny+testa%03d@xxxxxmailinator.com'
 env_urls = {
     "qa": "http://api.sailthru-qa.com",
     "prod": "http://api.sailthru.com",
+    "qa2": "http://api.qa2.sailthru-qa.com",
     "dev": "http://api.sailthru-dev.com",
 }
 #go go gadget args
@@ -22,7 +23,7 @@ args = parser.parse_args()
 num = args.n_variable
 env = args.e_variable
 #open the data file with the api info
-with open('../../d.txt') as json_data:
+with open('../d.txt') as json_data:
 #with open('../../3068.txt') as json_data:
 #with open('../../3060.txt') as json_data:
     data = json.load(json_data)
@@ -37,7 +38,7 @@ except KeyError:
 # a list of e-mails
 emails = [template % (n+1) for n in range(num)]
 
-# the name of the list, used as filename also. 
+# the name of the list, used as filename also.
 fname = ("%d_person_list" % num)
 
 # A comma-separated list of emails as a string, See
