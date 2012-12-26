@@ -1,3 +1,5 @@
+<h1>Hi</h1>I'm <a href="http://www.dannyrosen.net">Danny.</a> I'm currently a QA Guy over <a href="http://www.github.com/sailthru">@Sailthru</a>.From time to time i write scripts and little apps in python and store them here. Enjoy lurking. Feel free to ping me on twitter: 
+
 From time to time I do things that I know in the future I will need to do again. Automation is the answer and python is the language.
 -- Sailthru Related
 1 - Dummy email generator - creates dummy emails and uploads them to sailthru
