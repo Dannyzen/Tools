@@ -1,3 +1,6 @@
+#Usage: To start time tracking: python timer.py -t <ticket_number>. To stop time tracking: python timer.py -e -t <ticket_number>
+#Required: fbSettings.py containing LOGIN and PW or TOKEN
+#Written by Danny Rosen, 2013 - @dannyzen
 from fogbugz import FogBugz
 from fogbugz import FogBugzAPIError
 import fbSettings
