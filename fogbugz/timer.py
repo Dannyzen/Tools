@@ -1,6 +1,3 @@
-#Usage: To start time tracking: python timer.py -t <ticket_number>. To stop time tracking: python timer.py -e -t <ticket_number>
-#Required: fbSettings.py containing LOGIN and PW.
-#Written by Danny Rosen, 2012 - @dannyzen
 from fogbugz import FogBugz
 from fogbugz import FogBugzAPIError
 import fbSettings
@@ -8,9 +5,12 @@ import argparse
 import pprint
 from BeautifulSoup import BeautifulSoup
 
+if hasattr(fbSettings,'TOKEN'):
+	fogbugz = FogBugz(fbSettings.URL, fbSettings.TOKEN)
+else:
+    fogbugz = FogBugz(fbSettings.URL)
+    fogbugz.logon(fbSettings.LOGIN, fbSettings.PW)
 
-fogbugz = FogBugz(fbSettings.URL)
-fogbugz.logon(fbSettings.LOGIN, fbSettings.PW)
 parser = argparse.ArgumentParser(description='I fix this later')
 parser.add_argument('-t','--ticket', required=True, help='Ticket Number')
 parser.add_argument('-e','--end', action='store_true', default=False, help='End')
