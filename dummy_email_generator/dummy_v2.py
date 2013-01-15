@@ -6,8 +6,8 @@ import argparse
 import json
 
 
-template = 'danny+testa%03d@xxxxxmailinator.com'
-#template = 'danny+test%03d@sailthru.com'
+#template = 'danny+testa%03d@xxxxxmailinator.com'
+template = 'danny+test%03d@sailthru.com'
 
 env_urls = {
     "qa": "http://api.sailthru-qa.com",
@@ -23,9 +23,9 @@ args = parser.parse_args()
 num = args.n_variable
 env = args.e_variable
 #open the data file with the api info
-with open('../d.txt') as json_data:
-#with open('../../3068.txt') as json_data:
+#with open('../d.txt') as json_data:
 #with open('../../3060.txt') as json_data:
+with open('../../3068.txt') as json_data:
     data = json.load(json_data)
     api_key = data["api_key"]
     api_secret = data["api_secret"]
@@ -46,7 +46,7 @@ fname = ("%d_person_list" % num)
 file_content = ','.join(emails)
 
 with open(fname, 'w+') as f:
-    f.writelines("emails\n")
+    f.writelines("email\n")
     f.writelines(file_content)
 
 sailthru_client = sc.SailthruClient(api_key, api_secret, env_url)
