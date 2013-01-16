@@ -39,11 +39,11 @@ except KeyError:
 emails = [template % (n+1) for n in range(num)]
 
 # the name of the list, used as filename also.
-fname = ("%d_person_list" % num)
+fname = ("%d_person_list.csv" % num)
 
 # A comma-separated list of emails as a string, See
 # http://docs.sailthru.com/api/job#import
-file_content = ','.join(emails)
+file_content = '\n'.join(emails)
 
 with open(fname, 'w+') as f:
     f.writelines("email\n")
