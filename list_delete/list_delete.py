@@ -26,10 +26,10 @@ except KeyError:
     raise KeyError("Unknown or unspecified environment %r" % env)
 sailthru_client = sc.SailthruClient(api_key, api_secret, env_url)
 response = sailthru_client.api_get('list', data)
-jdata = json.loads(response)
+
 #[ (the thing I want) for (variable to iterate) in (some other list)]
-rmlist=([l['name'] for l in jdata['lists']]) 
+rmlist=([l['name'] for l in body['lists']]) 
 for list_name in rmlist:
 	todelete={"list":list_name}
 	response = sailthru_client.api_delete('list', todelete)
-	print response
+	print response.get_body()
