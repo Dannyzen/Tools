@@ -10,7 +10,7 @@ template = 'danny+testa%03d@mailinator.com'
 #template = 'danny+test%03d@sailthru.com'
 
 env_urls = {
-    "qa": "http://api.sailthru-qa.com",
+    "qa1": "http://api.qa1.sailthru-qa.com",
     "prod": "http://api.sailthru.com",
     "qa2": "http://api.qa2.sailthru-qa.com",
     "dev": "http://api.sailthru-dev.com",
