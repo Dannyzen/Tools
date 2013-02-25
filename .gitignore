@@ -2,3 +2,4 @@ d.txt
 fbSettings.py
 test.txt
 settings.json
+*.pyc
