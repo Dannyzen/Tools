@@ -56,4 +56,5 @@ data = {
     "emails": file_content,
 }
 response = sailthru_client.api_post('job', data)
-print response
+body = response.get_body()
+print body
