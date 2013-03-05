@@ -6,13 +6,14 @@ import argparse
 import json
 
 
-template = 'danny+testa%03d@mailinator.com'
+template = 'danny+testa%03d@sailthru.com'
 #template = 'danny+test%03d@sailthru.com'
 
 env_urls = {
     "qa1": "http://api.qa1.sailthru-qa.com",
-    "prod": "http://api.sailthru.com",
     "qa2": "http://api.qa2.sailthru-qa.com",
+    "qa3": "http://api.qa3.sailthru-qa.com",
+    "prod": "http://api.sailthru.com",
     "dev": "http://api.sailthru-dev.com",
 }
 #go go gadget args
