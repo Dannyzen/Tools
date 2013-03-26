@@ -1,24 +1,24 @@
-Ideas
-=====
+Style Guides
+---------------------
 
-* Style Guides: https://wiki.mozilla.org/QA/Execution/Web_Testing/Docs/Automation/StyleGuide
+Style Guides: https://wiki.mozilla.org/QA/Execution/Web_Testing/Docs/Automation/StyleGuide
 
-* Test Case Repositories
+Test Case Management Systems
+----------------------
+* Moztrap: https://github.com/mozilla/moztrap
 
-** Moztrap: https://github.com/mozilla/moztrap
+* Testpad: https://ontestpad.com/
 
-** Testpad: https://ontestpad.com/
+* Testlodge: http://www.testlodge.com/
 
-** Testlodge: http://www.testlodge.com/
+* Testuff: http://www.testuff.com/
 
-** Testuff: http://www.testuff.com/
+* Klaros: http://www.klaros-testmanagement.com
 
-** Klaros: http://www.klaros-testmanagement.com
-
-** Testrail: http://testrail.com/
+* Testrail: http://testrail.com/
 
 
-* Other 
-
-** Warden: https://github.com/vicwind/warden
+Other Cool Stuff
+----------------
+Warden: https://github.com/vicwind/warden
 
