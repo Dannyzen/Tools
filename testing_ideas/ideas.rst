@@ -21,4 +21,4 @@ Test Case Management Systems
 Other Cool Stuff
 ----------------
 Warden: https://github.com/vicwind/warden
-
+Evolving QA: http://bloodredsun.com/2012/10/23/why-qa-needs-to-change/
