@@ -20,5 +20,16 @@ Test Case Management Systems
 
 Other Cool Stuff
 ----------------
-Warden: https://github.com/vicwind/warden
-Evolving QA: http://bloodredsun.com/2012/10/23/why-qa-needs-to-change/
+* Warden: https://github.com/vicwind/warden
+
+
+Community
+---------
+* Hangops - http://hangops.com/
+
+Articles
+---------
+* Evolving QA: http://bloodredsun.com/2012/10/23/why-qa-needs-to-change/
+
+* The QA Conundrum: http://blog.assembla.com/assemblablog/tabid/12618/bid/90141/The-QA-Conundrum-How-Can-We-Move-Faster.aspx
+
