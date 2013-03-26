@@ -35,3 +35,4 @@ Articles
 
 * The QA Conundrum: http://blog.assembla.com/assemblablog/tabid/12618/bid/90141/The-QA-Conundrum-How-Can-We-Move-Faster.aspx
 
+* Branch-per-Feature: http://dymitruk.com/blog/2012/02/05/branch-per-feature/
