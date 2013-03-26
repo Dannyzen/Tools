@@ -7,6 +7,8 @@ Test Case Management Systems
 ----------------------
 * Moztrap: https://github.com/mozilla/moztrap
 
+* Moztrap-connect: https://moztrap-connect.readthedocs.org/en/latest/index.html#
+
 * Testpad: https://ontestpad.com/
 
 * Testlodge: http://www.testlodge.com/
