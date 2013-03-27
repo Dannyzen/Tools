@@ -24,6 +24,8 @@ Other Cool Stuff
 ----------------
 * Warden: https://github.com/vicwind/warden
 
+* CIJoe: https://github.com/defunkt/cijoe
+
 
 Community
 ---------
