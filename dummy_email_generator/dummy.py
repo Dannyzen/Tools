@@ -6,16 +6,14 @@ import argparse
 import json
 
 
-template = 'danny+testa%03d@mailinator.com'
+template = 'danny+testa%03d@sailthru.com'
 #template = 'danny+test%03d@sailthru.com'
 
 env_urls = {
-    "qa": "http://api.sailthru-qa.com",
-    "prod": "http://api.sailthru.com",
     "qa1": "http://api.qa1.sailthru-qa.com",
     "qa2": "http://api.qa2.sailthru-qa.com",
     "qa3": "http://api.qa3.sailthru-qa.com",
-    "dev": "http://api.sailthru-dev.com",
+    "prod": "http://api.sailthru.com",
 }
 #go go gadget args
 parser = argparse.ArgumentParser(description='Docs docs docs these are my docs')
@@ -58,4 +56,5 @@ data = {
     "emails": file_content,
 }
 response = sailthru_client.api_post('job', data)
-print response
+body = response.get_body()
+print body

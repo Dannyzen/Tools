@@ -4,7 +4,7 @@ import argparse
 from pprint import pprint
 
 env_urls = {
-    "qa": "http://api.sailthru-qa.com",
+    "qa2": "http://api.qa2.sailthru-qa.com",
     "prod": "http://api.sailthru.com",
     "dev": "http://api.sailthru-dev.com",
 }
