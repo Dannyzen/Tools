@@ -11,6 +11,7 @@ rsync -av --exclude $d --exclude 'mover.sh' * $d
 #rename anything with a space, and move it to the right place
 echo "->renaming in the case there are spaces"
 rename 's/ /_/g' *
+#moving everything that's not on its way to the nas
 shopt -s extglob 
 echo !(mover.sh|$d) | xargs rm -rv .
 #shuttle that folder to the nas and if it has an exit of 0 rm that folder
