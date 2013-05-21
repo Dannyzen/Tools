@@ -14,7 +14,6 @@ env_urls = {
     "qa2": "http://api.qa2.sailthru-qa.com",
     "qa3": "http://api.qa3.sailthru-qa.com",
     "prod": "http://api.sailthru.com",
-    "dev": "http://api.sailthru-dev.com",
 }
 #go go gadget args
 parser = argparse.ArgumentParser(description='Docs docs docs these are my docs')
