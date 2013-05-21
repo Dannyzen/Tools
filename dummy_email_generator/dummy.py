@@ -6,7 +6,7 @@ import argparse
 import json
 
 
-template = 'danny+testa%03d@sailthru.com'
+template = 'danny%03d@mailinator.com'
 #template = 'danny+test%03d@sailthru.com'
 
 env_urls = {
