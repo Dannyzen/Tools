@@ -1,3 +1,7 @@
+#Twitter: Dannyzen
+#Usage: python shutdown.py number_of_minutes
+#If no minutes are given, it attempts to cancel any scheduled shutdowns 
+
 import sys
 import os
 
