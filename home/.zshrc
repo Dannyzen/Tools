@@ -1,11 +1,16 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+#env
+export PATH=$PATH:/usr/local/bin/:/usr/bin:/bin:/usr/share/ruby-rvm/bin
+export REMOTE_DOTFILES=Dannyzen/dotfiles
+export DOTFILES=$HOME/.homesick/repos/${REMOTE_DOTFILES}
+export DOTFILES_HOME=${DOTFILES}/home
+
+ZSH=$DOTFILES_HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="clean"
+ZSH_THEME="af-magic"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -36,7 +41,7 @@ ZSH_THEME="clean"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git python pip ssh-agent zsh-syntax-highlighting)
+plugins=(git python pip ssh-agent vundle zsh-syntax-highlighting)
 
 # OSX handling
 os=`uname -s`
@@ -75,8 +80,8 @@ HISTSIZE=10000
 
 # Sourcing
 source $ZSH/oh-my-zsh.sh
-source $HOME/.bash_alias
-source $HOME/.apps
+source $DOTFILES_HOME/.bash_alias
+source $DOTFILES_HOME/.apps
 
 if [ -f $HOME/qa/.bash_alias ]; then
     . $HOME/qa/.bash_alias
@@ -85,5 +90,3 @@ fi
 if [ -f $HOME/.shush ]; then
     . $HOME/.shush
 fi
-# Customize to your needs...
-export PATH=$PATH:/usr/local/bin/:/usr/bin:/bin:/usr/share/ruby-rvm/bin
