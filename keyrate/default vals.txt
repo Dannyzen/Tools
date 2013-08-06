@@ -1,1 +1,1 @@
-keyrate.exe 150 10
+keyrate.exe 300 10
