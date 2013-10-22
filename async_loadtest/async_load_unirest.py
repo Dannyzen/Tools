@@ -1,5 +1,8 @@
 import unirest
 
+destination =  "http://httpbin.org/post"
+num = 500
+
 def callback(response):
   response.code # The HTTP status code
   print response.code
@@ -10,8 +13,8 @@ def callback(response):
   response.raw_body # The unparsed response
   print response.raw_body
 
-x = 0
-while x < 500:
-    thread = unirest.post("http://httpbin.org/post", { "Accept": "application/json" }, { "parameter": 23, "foo": "bar" }, callback)
-    print thread
-    x = x+1
+def run(num, destination):
+    for n in range(0, num):
+        thread = unirest.post(destination, { "Accept": "application/json" }, { "parameter": 23, "foo": "bar" }, callback)
+        print thread
+run(num, destination)
