@@ -1,2 +1,2 @@
 Testing!
-[an example](master/keyrate "Title")
+[an example](keyrate "Title")
